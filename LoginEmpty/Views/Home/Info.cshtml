@@ -1,0 +1,88 @@
+﻿@using LoginEmpty.Models
+
+@{
+    Layout = "~/Views/Shared/_ArticleLayout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Info";
+}
+
+
+@*<h2>Info</h2>*@
+@*<table class="table table-striped">
+        <tr>
+            <!--表头-->
+            <th>Id</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Grade</th>
+            <th>Grade</th>
+        </tr>
+        @foreach (ArticleInfo x in ViewBag.UserArticles)
+        {
+            <tr>
+                <td>@x.Article</td>
+                <td>@x.Name</td>
+                <td>@x.Hit</td>
+                <td>@x.Time</td>
+                <td>@x.Content</td>
+            </tr>
+        }
+</table>*@
+<script src="~/Scripts/viviJquery.js"></script>
+<link href="/Content/info.css" rel="stylesheet">
+
+<div id="container">@*大框架*@
+    <div id="tablecss">
+        <ul style="margin-top: 10px;">
+            <li> <a id="tableli" href="www.baidu.com" target="blank">首页</a></li>
+            <li> <a id="tableli" href="www.baidu.com" target="blank">问答</a></li>
+            <li> <a id="tableli" href="www.baidu.com" target="blank">更多</a></li>
+            
+
+            <li id="tablelivv"><a href="/Home/Index">Logout</a></li>
+            <li id="tablelivv">hello,@ViewBag.userName</li>
+        </ul>
+        @*  *@
+        <div style="display: inline">
+            @using (Ajax.BeginForm("Search", "Home",
+                new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET",
+                    OnFailure = "searchFailed",
+                    LoadingElementId = "ajax-loader",
+                    UpdateTargetId = "searchresults",
+                }))
+            {
+                <input type="text" name=q />
+                <input type="submit" value="search" />
+            }
+        </div>
+
+        <span style="float: right"></span>
+    </div>
+    <div class="leftsidesection">
+        @*@ViewBag.count;*@
+@foreach (ArticleInfo x in ViewBag.UserArticles)
+{
+    <div class="articlecss">
+    <div>@x.Article</div>
+        <div>@x.Name</div>
+        <div>@x.Time</div>
+        <div>@x.Content</div>
+        <div>@x.Hit</div>
+</div>
+}
+    </div>
+    <div class="rightside">广告</div>
+    <div class="rightsidenotop">日历挂件</div>
+    @*<footer style="position: absolute; bottom: 0; text-align: center; font-size: +15px; margin: auto; width: 100%; margin-bottom: 20px">
+        <p style="color: black">&copy; @DateTime.Now.Year - Vivi Lei</p>
+    </footer>*@
+</div>
+
+
+
