@@ -134,14 +134,44 @@ namespace LoginEmpty.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Search(string q)
+        public ActionResult CreateBlog(string artiName,string articontent )
         {
-            DatabaseContext userResultDatabaseContext = new DatabaseContext();
-            var user = userResultDatabaseContext.Users.Where(x => x.Name.Contains(q)).ToList();
-            ViewBag.user = user;
-            return PartialView(user);
+            //未登录
+            User user = (User)Session["userInfo"];
+            ViewBag.UserInfo = user;
+
+            if (ViewBag.UserInfo == null)
+            {
+                return RedirectToAction("Index");
+            }
+                else
+            {
+                User writerName = (User) Session["userInfo"];
+                if (ModelState.IsValid)
+                {
+                    DatabaseContext  arti = new DatabaseContext();
+                    arti.ArticleInfoes.Add(new ArticleInfo()
+                    {
+                        Article = artiName,
+                        Content = articontent,
+                        Time = DateTime.Now,
+                        Hit = 0,
+                        Name = writerName.Name
+                    });
+                }
+                
+            }
+            return View();
         }
 
-       
+        //public ActionResult Search(string q)
+        //{
+        //    DatabaseContext userResultDatabaseContext = new DatabaseContext();
+        //    var user = userResultDatabaseContext.Users.Where(x => x.Name.Contains(q)).ToList();
+        //    ViewBag.user = user;
+        //    return PartialView(user);
+        //}
+
+
     }
 }

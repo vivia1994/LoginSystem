@@ -1,4 +1,5 @@
-﻿@using LoginEmpty.Models
+﻿@using System.Web.UI.WebControls
+@using LoginEmpty.Models
 
 @{
     Layout = "~/Views/Shared/_ArticleLayout.cshtml";
@@ -46,7 +47,33 @@
             <li id="tablelivv">hello,@ViewBag.userName</li>
         </ul>
         @*  *@
-        <div style="display: inline">
+        
+
+        <span style="float: right"></span>
+    </div>
+    
+    <div class="leftsidesection">
+        <h3 style="text-align: center">您发表的博文</h3>
+        @using (Html.BeginForm("CreateBlog", "Home", FormMethod.Get))
+        {
+            <Button  type = "submit" id="myButton" >New blog</Button>
+
+        }
+           
+                @foreach (ArticleInfo x in ViewBag.UserArticles)
+                {
+            <div class="articlecss">
+                <div>@x.Article</div>
+                <div>作者：@x.Name</div>
+                <div>时间：@x.Time.ToShortDateString()</div>
+                <div>@x.Content</div>
+                <div>点赞数：@x.Hit</div>
+            </div>
+                    }
+    </div>
+    <div class="rightside">广告</div>
+    <div class="rightsidenotop">日历挂件
+        @*<div>
             @using (Ajax.BeginForm("Search", "Home",
                 new AjaxOptions
                 {
@@ -60,25 +87,9 @@
                 <input type="text" name=q />
                 <input type="submit" value="search" />
             }
-        </div>
-
-        <span style="float: right"></span>
+        </div>*@
+    
     </div>
-    <div class="leftsidesection">
-        @*@ViewBag.count;*@
-@foreach (ArticleInfo x in ViewBag.UserArticles)
-{
-    <div class="articlecss">
-    <div>@x.Article</div>
-        <div>@x.Name</div>
-        <div>@x.Time</div>
-        <div>@x.Content</div>
-        <div>@x.Hit</div>
-</div>
-}
-    </div>
-    <div class="rightside">广告</div>
-    <div class="rightsidenotop">日历挂件</div>
     @*<footer style="position: absolute; bottom: 0; text-align: center; font-size: +15px; margin: auto; width: 100%; margin-bottom: 20px">
         <p style="color: black">&copy; @DateTime.Now.Year - Vivi Lei</p>
     </footer>*@

@@ -60,17 +60,18 @@
 <link href="/Content/styles.css" rel="stylesheet">
 <div class="wrapper">
     <div class="container">
-        <h1 style="font-size: +80px">VLOG</h1>
-        <h2>与世界分享你的知识</h2>
-        <form role="form" class="form" method="get" action="/Home/Login">
-            <input type="text" placeholder="Enter your name" name="name" id="exampleInputEmail1">
-            @*@Html.PasswordFor()*@
-            <input type="password" placeholder="Enter your password" name="password" id="exampleInputPassword1">
-            <button type="submit" id="login-button" style="height:40px;width:80px">Login</button>
-            @Html.ActionLink("No account? Register one", "Register", "Home")
-            @*<button style="height:40px;width:80px" type="submit" id="register-button" onClick="location.href = '~/Views/Home/Register'">Regist</button>*@
-        </form>
-    </div>
+            <h1 style="font-size: +80px">VLOG</h1>
+            <h2>与世界分享你的知识</h2>
+            <form role="form" class="form" method="get" action="/Home/Login">
+                <input type="text" placeholder="Enter your name" name="name" id="exampleInputEmail1">
+                @*@Html.PasswordFor()*@
+                <input type="password" placeholder="Enter your password" name="password" id="exampleInputPassword1">
+                <button type="submit" id="login-button" style="height: 40px; width: 80px; margin-left:185px">Login</button>
+                <button type="reset" id="re-button" style="height: 40px; width: 80px; margin: auto">Reset</button>
+                @Html.ActionLink("No account? Register one", "Register", "Home")
+                @*<button style="height:40px;width:80px" type="submit" id="register-button" onClick="location.href = '~/Views/Home/Register'">Regist</button>*@
+            </form>
+</div>
     <ul class="bg-bubbles">
         <li></li>
         <li></li>

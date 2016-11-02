@@ -14,7 +14,9 @@
         width: 70%;
         height: 600px;
         background-color:#ffffff;
+        /*box-sizing: border-box;*/
         overflow: scroll;
+        /*padding:0 15px 0 15px;*/
     }
     .rightside {
         margin-top: 0px;
@@ -64,8 +66,22 @@
         margin-top: 5px;
         background-color: aliceblue;
         text-align: center;
-        margin-left:40px;
-        margin-right:40px;
+        margin-left: 40px;
+        margin-right: 40px;
+        border-radius: 5px; /*圆角*/
+        padding: 15px 15px 15px 15px;
+    }
+    #myButton {
+        background-color: white;
+        border: 0;
+        padding: 0;
+        color:black;
+        border-radius: 5px;
+        width: 90px;
+        height: 35px;
+        cursor: pointer;
+        font-size: 18px;
+        background-color: #f5f7f9;
     }
 }
 @media screen and (max-width:599px) {
