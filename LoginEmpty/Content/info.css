@@ -15,17 +15,19 @@
         height: 600px;
         background-color:#ffffff;
         /*box-sizing: border-box;*/
-        overflow: scroll;
+        /*overflow: scroll;*/
         /*padding:0 15px 0 15px;*/
+        border-radius: 10px;
     }
     .rightside {
-        margin-top: 0px;
+        margin-top: 10px;
         margin-left: 70%;
+        margin-bottom: 5px;
         height: 200px;
         background-color:darkorchid;
     }
     .rightsidenotop {
-        margin-top: 0px;
+        margin-top: 10px;
         margin-left: 70%;
         height: 200px;
         background-color:darkorchid;
@@ -63,9 +65,9 @@
         font-size: 25px;
     }
     .articlecss {
-        margin-top: 5px;
+        margin-top: 20px;
         background-color: aliceblue;
-        text-align: center;
+        text-align: left;
         margin-left: 40px;
         margin-right: 40px;
         border-radius: 5px; /*圆角*/
@@ -83,6 +85,17 @@
         font-size: 18px;
         background-color: #f5f7f9;
     }
+    #mybeignform {
+        width: 90px;
+        height: 35px;
+        float: right;
+    }
+   .mydiv {
+       width: 200px;
+       display: inline;
+       margin: 5px;
+       padding: 5px;
+   }
 }
 @media screen and (max-width:599px) {
   nav li {

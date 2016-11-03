@@ -44,32 +44,34 @@
             
 
             <li id="tablelivv"><a href="/Home/Index">Logout</a></li>
-            <li id="tablelivv">hello,@ViewBag.userName</li>
+            <li id="tablelivv"><a href="/Home/Info">@ViewBag.userName</a></li>
         </ul>
         @*  *@
         
 
-        <span style="float: right"></span>
+        @*<span style="float: right"></span>*@
     </div>
     
     <div class="leftsidesection">
-        <h3 style="text-align: center">您发表的博文</h3>
-        @using (Html.BeginForm("CreateBlog", "Home", FormMethod.Get))
+        <h3 style="text-align: center; display: inline;width: 200px">Published bolg</h3>
+        @using (Html.BeginForm("CreateBlog", "Home", FormMethod.Get, new { id = "mybeignform" }))
         {
-            <Button  type = "submit" id="myButton" >New blog</Button>
-
+            <button type="submit" class="btn btn-primary">New blog</button>
         }
-           
                 @foreach (ArticleInfo x in ViewBag.UserArticles)
                 {
-            <div class="articlecss">
-                <div>@x.Article</div>
-                <div>作者：@x.Name</div>
-                <div>时间：@x.Time.ToShortDateString()</div>
-                <div>@x.Content</div>
-                <div>点赞数：@x.Hit</div>
-            </div>
-                    }
+                    <div class="articlecss">
+                        <div class="mydiv">@x.Article</div>
+                        <div class="mydiv">Writer：@x.Name</div>
+                        <div class="mydiv">Time：@x.Time.ToShortDateString()</div>
+                        <div class="mydiv">@x.Content.Substring(0, 20)</div>
+                        @*<div>点赞数：@x.Hit</div>*@
+                        @using (Html.BeginForm("EditBlog", "Home", FormMethod.Get, new {style = "float: right; margin-right: 20px;margin-bottom: 5px"}))
+                        {
+                            <button type="submit" class="btn btn-info">Edit</button>
+                        }
+                    </div>
+                }
     </div>
     <div class="rightside">广告</div>
     <div class="rightsidenotop">日历挂件

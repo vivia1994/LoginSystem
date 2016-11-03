@@ -136,34 +136,55 @@ namespace LoginEmpty.Controllers
 
         public ActionResult CreateBlog(string artiName,string articontent )
         {
+
             //未登录
             User user = (User)Session["userInfo"];
             ViewBag.UserInfo = user;
-
             if (ViewBag.UserInfo == null)
             {
                 return RedirectToAction("Index");
             }
                 else
             {
+                ViewBag.userName = user.Name;
                 User writerName = (User) Session["userInfo"];
                 if (ModelState.IsValid)
                 {
-                    DatabaseContext  arti = new DatabaseContext();
-                    arti.ArticleInfoes.Add(new ArticleInfo()
+                    if (!artiName.IsEmpty() && !articontent.IsEmpty())
                     {
-                        Article = artiName,
-                        Content = articontent,
-                        Time = DateTime.Now,
-                        Hit = 0,
-                        Name = writerName.Name
-                    });
+                        DatabaseContext arti = new DatabaseContext();
+                        arti.ArticleInfoes.Add(new ArticleInfo()
+                        {
+                            Article = artiName,
+                            Content = articontent,
+                            Time = DateTime.Now,
+                            Hit = 0,
+                            Name = writerName.Name
+                        });
+                        arti.SaveChanges();
+                    }
                 }
-                
-            }
-            return View();
-        }
 
+            }
+            return RedirectToAction("Info");
+        }
+        public ActionResult Editblog()
+        {
+            User user = (User) Session["UserInfo"];
+            ViewBag.userName = user;
+            if (ViewBag.userName == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    
+                }
+                return View();
+            }
+        }
         //public ActionResult Search(string q)
         //{
         //    DatabaseContext userResultDatabaseContext = new DatabaseContext();
