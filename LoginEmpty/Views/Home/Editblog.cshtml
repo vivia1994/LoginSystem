@@ -26,7 +26,7 @@
         </ul>
     </div>
     <div class="leftsidesection" style="overflow:auto">
-        <form role="form" class="form" method="get" action="/Home/EditSubmit" style="margin-left:30%">
+        <form role="form" class="form" method="post" action="/Home/EditSubmit" style="margin-left:30%">
             <input type="hidden" name="artiId" value="@artiInfo.ArticleInfoId" />
             Title<textarea name="artiName" rows="1" cols="4" style="resize: none" class="form-control">@artiInfo.Article</textarea>
             Content<textarea name="artiContent" style="resize: none;height:400px;width:800px" class="form-control">@artiInfo.Content</textarea>
