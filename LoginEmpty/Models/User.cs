@@ -8,8 +8,9 @@ namespace LoginEmpty.Models
     {
         
         [Key]
+        [Required(ErrorMessage ="please input your name")]
         public string Name { get; set; }
-
+        [Required(ErrorMessage = "please input your password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Sex { get; set; }

@@ -13,15 +13,16 @@ namespace LoginEmpty.Controllers
     [Authorize] //这个控制器中的所有操作都允许注册用户访问，禁止匿名访问
     public class HomeController : Controller
     {
+        private DatabaseContext database;
+
+        public HomeController()
+        {
+            database=new DatabaseContext();
+        }
         // GET: Home
         [AllowAnonymous] //允许匿名访问
         public ActionResult Index()
         {
-            //DatabaseContext articleDbContext = new DatabaseContext();
-            //List<ArticleInfo> userArticle = articleDbContext.ArticleInfoes.ToList();
-            //var re = from x in userArticle select x;
-            //ViewBag.UserArticles = userArticle;
-
             return View();
         }
 
@@ -174,41 +175,34 @@ namespace LoginEmpty.Controllers
             }
             return View();
         }
-        /// <summary>
-        /// 修改博文
-        /// </summary>
-        /// <param name="artiId"></param>
-        /// <param name="artiName"></param>
-        /// <param name="articontent"></param>
-        /// <returns></returns>
-        public ActionResult Editblog(int? artiId, string artiName, string artiContent)
+
+        public ActionResult Editblog(int? artiId)
         {
-           
-
-            User user = (User) Session["UserInfo"];
-            ViewBag.userName = user;
-            if (ViewBag.userName == null)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    ViewBag.article = artiName;
-                    ViewBag.content = artiContent;
-                }
-                return View();
-            }
-            //public ActionResult Search(string q)
-            //{
-            //    DatabaseContext userResultDatabaseContext = new DatabaseContext();
-            //    var user = userResultDatabaseContext.Users.Where(x => x.Name.Contains(q)).ToList();
-            //    ViewBag.user = user;
-            //    return PartialView(user);
-            //}
-
-
+            ArticleInfo artiInfo = database.ArticleInfoes.Find(artiId);
+            ViewBag.ArticleInfo = artiInfo;
+            return View();
         }
+
+        public ActionResult EditSubmit(int? artiId, string artiName, string artiContent)
+        {
+            ArticleInfo artiInfo = database.ArticleInfoes.Find(artiId);
+            artiInfo.Article = artiName;
+            artiInfo.Content = artiContent;
+            database.SaveChanges();
+            ViewBag.ArticleInfo = artiInfo;
+            return View();
+        }
+
+
     }
 }
+
+
+
+//public ActionResult Search(string q)
+        //{
+        //    DatabaseContext userResultDatabaseContext = new DatabaseContext();
+        //    var user = userResultDatabaseContext.Users.Where(x => x.Name.Contains(q)).ToList();
+        //    ViewBag.user = user;
+        //    return PartialView(user);
+        //}

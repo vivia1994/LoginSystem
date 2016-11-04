@@ -65,12 +65,8 @@
                         <div class="mydiv">Writer：@x.Name</div>
                         <div class="mydiv">Time：@x.Time.ToShortDateString()</div>
                         <div class="mydiv">@x.Content.Substring(0, 20)</div>
-                        @using (Html.BeginForm("EditBlog", "Home", FormMethod.Get, new { style = "float: right; margin-right: 20px;margin-bottom: 5px" }))
+                        @using (Html.BeginForm("EditBlog", "Home", FormMethod.Get, new {style = "float: right; margin-right: 20px;margin-bottom: 5px"}))
                         {
-                            <input type="hidden" name="artiId" />
-                            <input type="hidden" name="artiName" />
-                            <input type="hidden" name="artiContent" />
-                            @*<label name="id">@x.ArticleInfoId</label>*@
                             <button type="submit" class="btn btn-info"><a href="/Home/Editblog?artiId=@x.ArticleInfoId">Edit</a></button>
                         }
                     </div>
