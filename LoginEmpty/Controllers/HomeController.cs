@@ -174,36 +174,32 @@ namespace LoginEmpty.Controllers
             }
             return View();
         }
+        /// <summary>
+        /// 修改博文
+        /// </summary>
+        /// <param name="artiId"></param>
+        /// <param name="artiName"></param>
+        /// <param name="articontent"></param>
+        /// <returns></returns>
+        public ActionResult Editblog(int? artiId, string artiName, string artiContent)
+        {
+           
 
-        //public ActionResult Editblog(string id, string artiName, string articontent)
-        //{
-        //    User user = (User) Session["UserInfo"];
-        //    ViewBag.userName = user;
-        //    if (ViewBag.userName == null)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            int id1 = 0;
-        //            int.TryParse(id, out id1);
-        //            DatabaseContext allArti = new DatabaseContext();
-        //            ArticleInfo article = allArti.ArticleInfoes.Where(p => p.ArticleInfoId == id1).SingleOrDefault();
-        //            article.Article = ViewBag.Article;
-        //            article.Content = ViewBag.Content;
-        //            article.Article= artiName;
-        //            article.Content = articontent;
-        //            allArti.SaveChanges();
-        //            //var re = from s in allArti.ArticleInfoes
-        //            //    where s.ArticleInfoId == id1
-        //            //         select s;
-        //            //re.Article = artiName;
-        //            //Content = articontent;
-        //        }
-        //        return View();
-        //    }
+            User user = (User) Session["UserInfo"];
+            ViewBag.userName = user;
+            if (ViewBag.userName == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.article = artiName;
+                    ViewBag.content = artiContent;
+                }
+                return View();
+            }
             //public ActionResult Search(string q)
             //{
             //    DatabaseContext userResultDatabaseContext = new DatabaseContext();
@@ -215,3 +211,4 @@ namespace LoginEmpty.Controllers
 
         }
     }
+}
