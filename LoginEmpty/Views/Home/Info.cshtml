@@ -68,6 +68,7 @@
                         @*<div>点赞数：@x.Hit</div>*@
                         @using (Html.BeginForm("EditBlog", "Home", FormMethod.Get, new {style = "float: right; margin-right: 20px;margin-bottom: 5px"}))
                         {
+                            <label name="id">@x.ArticleInfoId</label>
                             <button type="submit" class="btn btn-info">Edit</button>
                         }
                     </div>
