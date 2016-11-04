@@ -67,7 +67,7 @@
                         <div class="mydiv">@x.Content.Substring(0, 20)</div>
                         @using (Html.BeginForm("EditBlog", "Home", FormMethod.Get, new {style = "float: right; margin-right: 20px;margin-bottom: 5px"}))
                         {
-                            <button type="submit" class="btn btn-info"><a href="/Home/Editblog?artiId=@x.ArticleInfoId">Edit</a></button>
+                            <a href="/Home/Editblog?artiId=@x.ArticleInfoId">Edit</a>
                         }
                     </div>
                 }
