@@ -1,0 +1,11 @@
+﻿@using Vlog.Models
+@{
+    ViewBag.Title = "Detail";
+    Article article = ViewBag.Article;
+    
+}
+
+<h2>@article.Title</h2>
+<p>@article.User.Name</p>
+<p>@article.Time</p>
+<p>@article.Content</p>
