@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -27,22 +28,25 @@ namespace Vlog.Controllers
         }
         public ActionResult LoginSubmit(string name,string password)
         {
+            Thread.Sleep(1000);
             //TODO:para check
-            List<User> result =(from u in database.Users where u.Name == name select u).ToList();
-            if(result.Count==0)
+            Dictionary<string,object> result = new Dictionary<string, object>();
+            List<User> userList = (from u in database.Users where u.Name == name select u).ToList();
+            if (userList.Count == 0)
             {
-                RouteValueDictionary values = new RouteValueDictionary();
-                values.Add("errorMessage", "wrong name!");
-                return RedirectToAction("Login",values);
+                result.Add("flag", false);
+                result.Add("reason", "wrong user");
+                return Json(result);
             }
-            if (result.First().Password != password)
+            if (userList.First().Password != password)
             {
-                RouteValueDictionary values = new RouteValueDictionary();
-                values.Add("errorMessage", "wrong password!");
-                return RedirectToAction("Login", values);
+                result.Add("flag", false);
+                result.Add("reason", "wrong password");
+                return Json(result);
             }
-            Session.Add("user", result.First());
-            return View();
+            Session.Add("user", userList.First());
+            result.Add("flag", true);
+            return Json(result);
         }
         public ActionResult SignUp()
         {
