@@ -26,7 +26,6 @@ namespace Vlog.Controllers
             }
             return View();
         }
-        [HttpGet]
         public ActionResult LoginSubmit(string name,string password)
         {
             Thread.Sleep(1000);
