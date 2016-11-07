@@ -26,7 +26,6 @@ namespace Vlog.Controllers
             }
             return View();
         }
-        [HttpGet]
         public ActionResult LoginSubmit(string name,string password)
         {
             Thread.Sleep(1000);
@@ -56,30 +55,6 @@ namespace Vlog.Controllers
         }
         public ActionResult SignUpSubmit(string name, string password, string sex)
         {
-            Thread.Sleep(1000);
-            Dictionary<string, object> result = new Dictionary<string, object>();
-            List<User> users = (from item in database.Users select item).ToList();
-            if (name.IsEmpty())     //名字为空
-            {
-                result.Add("flag", false);
-                result.Add("reason", "Please input name!");
-                return Json(result);
-            }
-            if (password.IsEmpty())     //密码为空
-            {
-                result.Add("flag", false);
-                result.Add("reason", "Please input password!");
-                return Json(result);
-            }
-            foreach (User u in users)
-            {
-                if (u.Name == name)     //名字重复
-                {
-                    result.Add("flag", false);
-                    result.Add("reason", "The name has existed!");
-                    return Json(result);
-                }
-            }
             User user = new User
             {
                 Name = name,
@@ -89,8 +64,7 @@ namespace Vlog.Controllers
             };
             database.Users.Add(user);
             database.SaveChanges();
-            result.Add("flag", true);
-            return Json(result);
+            return View();
         }
     }
 }

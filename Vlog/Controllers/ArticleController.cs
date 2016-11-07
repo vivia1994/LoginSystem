@@ -26,7 +26,6 @@ namespace Vlog.Controllers
             ViewBag.Articles = articles;
             return View();
         }
-
         /// <summary>
         /// 登录之后用户主页面
         /// </summary>
@@ -42,7 +41,6 @@ namespace Vlog.Controllers
             ViewBag.Articles = articles;
             return View();
         }
-
         /// <summary>
         /// 文章详情
         /// </summary>
@@ -51,16 +49,8 @@ namespace Vlog.Controllers
         {
             Article article = database.Articles.Find(articleId);
             ViewBag.Article = article;
-
-            while (-1 != article.Content.IndexOf("\n"))
-            {
-                article.Content = article.Content.Replace("\n", "<br/>");
-            }
-            //item.Content = item.Content.Replace("\n", "<br/>");
-            //item.Content= item.Content.Replace("char(13)", "<br/>");
             return View();
         }
-
         public ActionResult Update(int articleId)
        {
             Article article = database.Articles.Find(articleId);
@@ -82,10 +72,6 @@ namespace Vlog.Controllers
         public ActionResult InsertSubmit(string title, string content)
         {
             //TODO:when the article is null
-            while (-1 != content.IndexOf("<br>"))
-            {
-                content = content.Replace("<br>", "\n");
-            }
             Article article = new Article
             {
                 Title = title,
