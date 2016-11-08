@@ -49,6 +49,10 @@ namespace Vlog.Controllers
         {
             Article article = database.Articles.Find(articleId);
             ViewBag.Article = article;
+            //while (-1 != article.Content.IndexOf("\n"))
+            //{
+            //    article.Content = article.Content.Replace("\n", "<br/>");
+            //}
             return View();
         }
         public ActionResult Update(int articleId)
@@ -72,6 +76,10 @@ namespace Vlog.Controllers
         public ActionResult InsertSubmit(string title, string content)
         {
             //TODO:when the article is null
+            //while (-1 != content.IndexOf("<br>"))
+            //{
+            //    content = content.Replace("<br>", "\n");
+            //}
             Article article = new Article
             {
                 Title = title,
