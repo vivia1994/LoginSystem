@@ -55,12 +55,14 @@ namespace Vlog.Controllers
             //}
             return View();
         }
+        [ValidateInput(false)]
         public ActionResult Update(int articleId)
        {
             Article article = database.Articles.Find(articleId);
             ViewBag.Article = article;
             return View();
         }
+        [ValidateInput(false)]
         public ActionResult UpdateSubmit(int articleId, string title, string content)
         {
             Article article = database.Articles.Find(articleId);
