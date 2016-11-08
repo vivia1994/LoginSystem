@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.WebPages;
 using Vlog.Models;
-
+using System.Text.RegularExpressions;
 namespace Vlog.Controllers
 {
     public class UserController : Controller
@@ -35,16 +35,10 @@ namespace Vlog.Controllers
             //TODO:para check
             Dictionary<string, object> result = new Dictionary<string, object>();
             List<User> userList = (from u in database.Users where u.Name == name select u).ToList();
-            if (userList.Count == 0)
+            if (userList.Count == 0|| userList.First().Password != password)
             {
                 result.Add("flag", false);
-                result.Add("reason", "wrong user");
-                return Json(result);
-            }
-            if (userList.First().Password != password)
-            {
-                result.Add("flag", false);
-                result.Add("reason", "wrong password");
+                result.Add("reason", "wrong user or password");
                 return Json(result);
             }
             Session.Add("user", userList.First());
@@ -63,6 +57,13 @@ namespace Vlog.Controllers
             Thread.Sleep(1000);
             Dictionary<string, object> result = new Dictionary<string, object>();
             List<User> users = (from item in database.Users select item).ToList();
+            //Regex r = new Regex("^/w+$");
+            //if (!r.IsMatch(name))
+            //{
+            //    result.Add("flag", false);
+            //    result.Add("reason", "wrong user format");
+            //    return Json(result);
+            //}
             if (name.IsEmpty()) //名字为空
             {
                 result.Add("flag", false);

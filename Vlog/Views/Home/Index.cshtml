@@ -5,49 +5,8 @@
     List<Article> articles = ViewBag.Articles;
 }
 
-@*style="float: right;margin-left: 10px"*@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
-    Login
-</button>
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Login</h4>
-            </div>
-
-            <form class="form-horizontal" role="form" action="/User/LoginSubmit" method="post">
-                <div class="modal-body">
-                    <div id="warnning" class="alert alert-danger" role="alert" style="display:none"></div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                        </div>
-                    </div>
-                    <div id="waiting" class="alert alert-info" role="alert" style="display:none">please wait...</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="signin" type="button" class="btn btn-primary">Sign in</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div>
-@*style="float: right"*@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal" style="margin-right: 5%;float: right" >
     SignUp
 </button>
 <!-- Modal -->
@@ -97,13 +56,55 @@
         </div>
     </div>
 </div>
+@*style="float: right;margin-left: 10px"*@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal" style="margin-right:15px;float: right">
+    Login
+</button>
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+
+            <form class="form-horizontal" role="form" action="/User/LoginSubmit" method="post">
+                <div class="modal-body">
+                    <div id="warnning" class="alert alert-danger" role="alert" style="display:none"></div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        </div>
+                    </div>
+                    <div id="waiting" class="alert alert-info" role="alert" style="display:none">please wait...</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="signin" type="button" class="btn btn-primary">Sign in</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 
 @foreach (Article item in articles)
 {
     <h3><a href="/Article/Detail?articleId=@item.ArticleId">@item.Title</a></h3>
-    <span>@item.User.Name</span>
-    <span>@item.Time.ToShortDateString()</span>
-    <p>@(item.Content.Length >= 20 ? item.Content.Substring(0, 20) : item.Content)</p>
+    <span style="font-weight: bold;font-size: +20px">@item.User.Name</span> 
+    <span style="font-size: +15px">@item.Time.ToShortDateString()</span>
+    <div class="panel panel-success"><p>@(item.Content.Length >= 200 ? item.Content.Substring(0, 200) : item.Content)</p></div>
 }
 
 <script src="~/scripts/vlog.js"></script>

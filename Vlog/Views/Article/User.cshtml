@@ -1,12 +1,11 @@
 ﻿@using Vlog.Models
 @{
-    ViewBag.Title = "User";
     List<Article>  articles = ViewBag.Articles;
 }
 
-<h2>User</h2>
 
-<h2><a href="Insert">Create blog</a></h2>
+<button type="button" class="btn btn-primary btn-lg" formaction="Insert">Create blog</button>
+
 
 @if (articles.Count == 0)
 {
@@ -14,12 +13,12 @@
 }
 else
 {
+
     foreach (Article item in articles)
     {
-        <h3><a href="Detail?articleId=@item.ArticleId">@item.Title</a></h3>        
-        <p><a href="Update?articleId=@item.ArticleId">Update</a></p>
-        <span>@item.User.Name</span>
-        <span>@item.Time.ToShortDateString()</span>
+
+        <h3>@item.Title <span class="label label-info" ><a href="/Article/Detail?articleId=@item.ArticleId"></a>Update</span></h3>
+        <span style="font-size: +15px">@item.Time.ToShortDateString()</span>
     }
 }
 
