@@ -69,10 +69,12 @@ namespace Vlog.Controllers
             database.SaveChanges();
             return View();
         }
+        [ValidateInput(false)]
         public ActionResult Insert()
         {
             return View();
         }
+        [ValidateInput(false)]
         public ActionResult InsertSubmit(string title, string content)
         {
             //TODO:when the article is null

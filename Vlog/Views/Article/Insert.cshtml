@@ -11,8 +11,13 @@
         <input type="text" class="form-control" id="exampleInputEmail1" name="title">
     </div>
     <div class="form-group">
-        <label>Content</label>
-        <textarea class="form-control" rows="3" name="content"></textarea>
+        <label>Content</label> 
+        <textarea class="form-control" rows="3" name="content" id="textarea1" style="height: 400px; width: 90%;resize: none" ></textarea>
+        <!--这里引用jquery和wangEditor.js-->
+        <script type="text/javascript">
+    var editor = new wangEditor('textarea1');
+    editor.create();
+        </script>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>

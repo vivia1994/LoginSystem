@@ -101,9 +101,9 @@
 @foreach (Article item in articles)
 {
     <h3><a href="/Article/Detail?articleId=@item.ArticleId">@item.Title</a></h3>
-    <p>@item.User.Name</p>
-    <p>@item.Time</p>
-        <p>@(item.Content.Length >= 20 ? item.Content.Substring(0, 20) : item.Content)</p>
+    <span>@item.User.Name</span>
+    <span>@item.Time.ToShortDateString()</span>
+        <p>@Html.Raw(item.Content.Length >= 20 ? item.Content.Substring(0, 20) : item.Content)</p>
 }
 
 <script src="~/scripts/vlog.js"></script>

@@ -17,9 +17,9 @@ else
     foreach (Article item in articles)
     {
         <h3><a href="Detail?articleId=@item.ArticleId">@item.Title</a></h3>        
-        <a href="Update?articleId=@item.ArticleId">Update</a>
-        <p>@item.User.Name</p>
-        <p>@item.Time</p>
+        <p><a href="Update?articleId=@item.ArticleId">Update</a></p>
+        <span>@item.User.Name</span>
+        <span>@item.Time.ToShortDateString()</span>
     }
 }
 
