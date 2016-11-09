@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlog", "Vlog\Vlog.csproj", "{03C06D81-8355-45E1-A7E5-8AC0CBEA9C11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BundleTest", "BundleTest\BundleTest.csproj", "{6B29D929-A9C3-44FB-A2FE-4597C98CF02F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{03C06D81-8355-45E1-A7E5-8AC0CBEA9C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C06D81-8355-45E1-A7E5-8AC0CBEA9C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C06D81-8355-45E1-A7E5-8AC0CBEA9C11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B29D929-A9C3-44FB-A2FE-4597C98CF02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B29D929-A9C3-44FB-A2FE-4597C98CF02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B29D929-A9C3-44FB-A2FE-4597C98CF02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B29D929-A9C3-44FB-A2FE-4597C98CF02F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
