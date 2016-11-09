@@ -20,6 +20,7 @@ namespace Vlog.Controllers
         public ActionResult Index()
         {
             //TODO:see more articles
+            //TODO:html labels 
             List<Article> articles = (from item in database.Articles orderby item.Time descending select item).Take(5).ToList();
             ViewBag.Articles = articles;
             return View();

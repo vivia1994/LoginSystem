@@ -1,4 +1,5 @@
-﻿@using Vlog.Models
+﻿@using System.Web.Optimization
+@using Vlog.Models
 
 @{
     ViewBag.Title = "Index";
@@ -107,4 +108,5 @@
     <div class="panel panel-success"><p>@(item.Content.Length >= 200 ? item.Content.Substring(0, 200) : item.Content)</p></div>
 }
 
-<script src="~/scripts/vlog.js"></script>
+@*<script src="~/scripts/vlog.js"></script>*@
+@Scripts.Render(" ~/scripts/vlog.js")
