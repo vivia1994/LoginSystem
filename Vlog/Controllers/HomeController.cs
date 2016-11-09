@@ -19,7 +19,7 @@ namespace Vlog.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<Article> articles = (from item in database.Articles orderby item.Time descending select item).ToList();
+            List<Article> articles = (from item in database.Articles orderby item.Time descending select item).Take(5).ToList();
             //articles.Take(2);
             ViewBag.Articles = articles;
             return View();
