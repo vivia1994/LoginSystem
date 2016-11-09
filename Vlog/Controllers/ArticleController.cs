@@ -95,5 +95,13 @@ namespace Vlog.Controllers
             database.SaveChanges();
             return View();
         }
+
+        public ActionResult Delete(int articleId)
+        {
+            Article article = database.Articles.Find(articleId);
+            database.Articles.Remove(article);
+            database.SaveChanges();
+            return View();
+        }
     }
 }

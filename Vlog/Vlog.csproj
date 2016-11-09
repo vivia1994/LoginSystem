@@ -212,6 +212,7 @@
     <Content Include="Views\Article\UpdateSubmit.cshtml" />
     <Content Include="Views\Article\Insert.cshtml" />
     <Content Include="Views\Article\InsertSubmit.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
