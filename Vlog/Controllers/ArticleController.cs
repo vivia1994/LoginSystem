@@ -95,6 +95,5 @@ namespace Vlog.Controllers
             database.SaveChanges();
             return View();
         }
-        //TODO:delete article
     }
 }
