@@ -36,6 +36,21 @@
             </button>
             @Html.ActionLink("Vlog", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
+@if ((User)Session["user"] == null)
+{
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal" style="margin-right: 5%;float: right">
+            SignUp
+        </button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal" style="margin-right:15px;float: right">
+            Login
+        </button>
+}
+else
+{
+    <p>hello,@(((User)Session["user"]).Name)</p>
+}
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
             </ul>
