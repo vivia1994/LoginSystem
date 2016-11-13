@@ -3,7 +3,7 @@
     List<Article>  articles = ViewBag.Articles;
 }
 
-<a href="Insert"><button type="button" class="btn btn-info">Create</button></a>
+<a href="Insert" style="display:block"><button type="button" class="btn btn-info">Create</button></a>
 
 @if (articles.Count == 0)
 {
@@ -11,13 +11,14 @@
 }
 else
 {
-
     foreach (Article item in articles)
-    { 
-        <a href="/Article/Detail?articleId=@item.ArticleId"><h3>@item.Title</h3></a>
-        <a href="Update?articleId=@item.ArticleId"><button type="button" class="btn btn-primary">Update</button></a>
-        <a href="Delete?articleId=@item.ArticleId"><button type="button" class="btn btn-danger">Delete</button></a>
-        <span style="font-size: +15px">@item.Time.ToShortDateString()</span>
+    {
+        <div style="margin-bottom:5px">
+            <a href="/Article/Detail?articleId=@item.ArticleId"><h3 style="display:inline">@item.Title</h3></a>
+            <span style="font-size: +15px">@item.Time.ToShortDateString()</span>
+            <a href="Update?articleId=@item.ArticleId"><button type="button" class="btn btn-default">Update</button></a>
+            <a href="Delete?articleId=@item.ArticleId"><button type="button" class="btn btn-default">Delete</button></a>
+        </div>
     }
 }
 
