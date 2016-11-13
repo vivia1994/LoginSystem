@@ -5,7 +5,7 @@
          { name: $('#name').val(), password: $('#password').val(), verificationCode: $('#verificationCode').val() },
         function (data) {
             if (data.flag) {
-                window.location.href = '/Article/User';
+                window.location.href = '/Article/Main';
             } else {
                 $('#waiting').css('display', 'none');
                 $('#signin').attr("disabled", false);

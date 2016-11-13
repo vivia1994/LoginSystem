@@ -207,7 +207,7 @@
     <Content Include="Views\User\SignUpSubmit.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\Detail.cshtml" />
-    <Content Include="Views\Article\User.cshtml" />
+    <Content Include="Views\Article\Main.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\UpdateSubmit.cshtml" />
     <Content Include="Views\Article\Insert.cshtml" />
