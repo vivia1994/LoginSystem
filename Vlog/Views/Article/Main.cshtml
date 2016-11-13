@@ -3,7 +3,7 @@
     List<Article>  articles = ViewBag.Articles;
 }
 
-<a href="Insert">Create</a>
+<a href="Insert"><button type="button" class="btn btn-info">Create</button></a>
 
 @if (articles.Count == 0)
 {
@@ -13,9 +13,7 @@ else
 {
 
     foreach (Article item in articles)
-    {
-
-        
+    { 
         <a href="/Article/Detail?articleId=@item.ArticleId"><h3>@item.Title</h3></a>
         <a href="Update?articleId=@item.ArticleId">Update</a>
         <a href="Delete?articleId=@item.ArticleId">Delete</a>
