@@ -15,8 +15,8 @@ else
     foreach (Article item in articles)
     { 
         <a href="/Article/Detail?articleId=@item.ArticleId"><h3>@item.Title</h3></a>
-        <a href="Update?articleId=@item.ArticleId">Update</a>
-        <a href="Delete?articleId=@item.ArticleId">Delete</a>
+        <a href="Update?articleId=@item.ArticleId"><button type="button" class="btn btn-primary">Update</button></a>
+        <a href="Delete?articleId=@item.ArticleId"><button type="button" class="btn btn-danger">Delete</button></a>
         <span style="font-size: +15px">@item.Time.ToShortDateString()</span>
     }
 }
