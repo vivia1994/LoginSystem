@@ -92,7 +92,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="verificationCode" name="verificationCode">
                     </div>
-                    <img src="/User/GetVerificationCode" />
+                    <img src="/User/GetVerificationCode?date=@DateTime.Now.GetHashCode()" id="imgCode"/>
                 </div>
                 <div id="waiting" class="alert alert-info" role="alert" style="display:none">please wait...</div>
             </div>

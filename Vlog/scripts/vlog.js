@@ -11,12 +11,12 @@
                 $('#signin').attr("disabled", false);
                 $('#warnning').text(data.reason);
                 $('#warnning').css('display', 'block');
+                reloadCodeSrc();
             }
         });
 });
 
-$('#signUp')
-    .click(function () {
+$('#signUp').click(function () {
         $('#signUpWaiting').css('display', 'block');
         $('#signUp').attr("disabled", true);
         $.post('/User/SignUpSubmit',
@@ -36,3 +36,10 @@ $('#signUp')
                 }
             });
     });
+
+
+function reloadCodeSrc() {
+    $('#imgCode').attr('src', '/User/GetVerificationCode?date=' + Math.random())
+}
+
+$('#imgCode').click(reloadCodeSrc);
