@@ -2,7 +2,7 @@
     $('#waiting').css('display', 'block');
     $('#signin').attr("disabled", true);
     $.post('/User/LoginSubmit',
-         { name: $('#name').val(), password: $('#password').val() },
+         { name: $('#name').val(), password: $('#password').val(), verificationCode: $('#verificationCode').val() },
         function (data) {
             if (data.flag) {
                 window.location.href = '/Article/User';
