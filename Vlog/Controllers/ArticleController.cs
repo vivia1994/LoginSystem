@@ -31,7 +31,7 @@ namespace Vlog.Controllers
         /// 登录之后用户主页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult User()
+        public ActionResult Main()
         {
             User user = (User)Session["user"];
             if (user == null)

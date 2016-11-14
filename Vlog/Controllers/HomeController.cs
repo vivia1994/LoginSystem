@@ -23,6 +23,8 @@ namespace Vlog.Controllers
             //TODO:html labels 
             List<Article> articles = (from item in database.Articles orderby item.Time descending select item).Take(5).ToList();
             ViewBag.Articles = articles;
+            User user = (User)Session["user"];
+            ViewBag.User = user;
             return View();
         }
 

@@ -8,6 +8,12 @@ using System.Web.Routing;
 using System.Web.WebPages;
 using Vlog.Models;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+
 namespace Vlog.Controllers
 {
     public class UserController : Controller
@@ -29,7 +35,7 @@ namespace Vlog.Controllers
             return View();
         }
 
-        public ActionResult LoginSubmit(string name, string password)
+        public ActionResult LoginSubmit(string name, string password ,string verificationCode)
         {
             Thread.Sleep(1000);
             //TODO:para check
@@ -38,7 +44,13 @@ namespace Vlog.Controllers
             if (userList.Count == 0|| userList.First().Password != password)
             {
                 result.Add("flag", false);
-                result.Add("reason", "wrong user or password");
+                result.Add("reason", "wrong user or password!");
+                return Json(result);
+            }
+            if (verificationCode != (string)Session["verificationCode"])
+            {
+                result.Add("flag", false);
+                result.Add("reason", "wrong verification code!");
                 return Json(result);
             }
             Session.Add("user", userList.First());
@@ -96,6 +108,29 @@ namespace Vlog.Controllers
             database.SaveChanges();
             result.Add("flag", true);
             return Json(result);
+        }
+        public ActionResult GetVerificationCode()
+        {
+            Random random = new Random();
+            string textColor = "#" + Convert.ToString(random.Next(99, 256), 16) + Convert.ToString(random.Next(99, 256), 16) + Convert.ToString(random.Next(99, 256), 16);
+            Bitmap image = new Bitmap(70, 35);
+            Graphics graphic = Graphics.FromImage(image);
+            graphic.TextRenderingHint = TextRenderingHint.AntiAlias; //消除锯齿
+            string verificationCode ="" + random.Next(0, 10) + random.Next(0, 10) + random.Next(0, 10) + random.Next(0, 10);
+            ColorConverter colorConvert = new ColorConverter();
+            Color fontColor = (Color)colorConvert.ConvertFromString(textColor);
+            Font font = new Font("Arial", 18, FontStyle.Bold);
+            LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, image.Width, image.Height),
+                fontColor, 
+                fontColor,
+                LinearGradientMode.Horizontal);
+            graphic.DrawString(verificationCode, font, brush, 2, 2);
+            Color backColor = image.GetPixel(1, 1);
+            image.MakeTransparent(backColor);
+            MemoryStream stream = new MemoryStream();
+            image.Save(stream, ImageFormat.Gif);
+            Session.Add("verificationCode", verificationCode);
+            return File(stream.ToArray(), "image/gif");
         }
     }
 }
