@@ -12,5 +12,11 @@ namespace MyCalculator
         {
             return first + second;
         }
+
+        public int Divide(int dividend, int divisor)
+        {
+            return dividend / divisor;
+        }
+
     }
 }
