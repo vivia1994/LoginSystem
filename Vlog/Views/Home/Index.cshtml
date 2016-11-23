@@ -32,29 +32,21 @@
                             <input type="password" class="form-control" id="signUpPassword" placeholder="Password" name="password">
                         </div>
                     </div>
-                    @*<div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="userInfo.autoLogin">自动登录
-                                    </label>
-                                </div>
-                            </div>
-                        </div>*@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <div class="radio">
-                                <label class="radio">
+                                <label class="radio-inline">
                                     <input type="radio" name="sex" id="signUpSexM" value="Male" checked>Male
                                 </label>
-                            </div>
-                            <div class="radio">
-                                <label>
+                                <label class="radio-inline">
                                     <input type="radio" name="sex" id="signUpSexF" value="Female">Female
                                 </label>
-                            </div>
                         </div>
                     </div>
+
+                    @*<label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                    </label>*@
+
                     <div id="signUpWaiting" class="alert alert-info" role="alert" style="display:none">please wait...</div>
                 </div>
                 <div class="modal-footer">
