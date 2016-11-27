@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using(Html.BeginForm("Upload", "Image", FormMethod.Post, new { enctype = "multipart/Form-data" }))//new { enctype = "multipart/Form-data" }
+{
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="control-label col-md-2">
+            <label for="file">Upload Image  for Slide:</label>
+        </div>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" style="width:50%" />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="text" name="uploadTitle"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+    
+    
+</div>
+}
