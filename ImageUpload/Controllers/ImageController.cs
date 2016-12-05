@@ -54,7 +54,12 @@ namespace ImageUpload.Controllers
                 }
             }
             return RedirectToAction("Index");
-
         }
+        //public ActionResult Get(string Id)
+        //{
+        //   Image image =  db.Images.Find(Id);
+        //    ViewBag.Image = image;
+        //    return View();
+        //}
     }
 }

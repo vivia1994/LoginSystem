@@ -2,10 +2,17 @@
 @{
     ViewBag.Title = "Index";
     List<Image> images = ViewBag.Images;
+    Image image = ViewBag.Image;
 }
 
 <h2>Index</h2>
 
-<a href="/Image/Index">Click to upload new images.</a>
+<a href="/Image/Upload">Click to upload new images.</a>
 
-<div class="panel panel-primary" 
+        @foreach (var item in images)
+        {
+           <div class="form-group ">
+                <a href="@item.ImageUrl.ToString()">@item.UploadTitle</a>
+            </div>
+        }
+
