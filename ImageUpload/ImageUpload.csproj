@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageDatabaseContext.cs" />
+    <Compile Include="Models\Thumbnail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

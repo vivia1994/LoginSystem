@@ -44,20 +44,21 @@ namespace ImageUpload.Controllers
                     byte[] md5Key = md5.ComputeHash(buffer);
                     string path = Path.Combine(Server.MapPath("/Content/images"), ToMD5String(md5Key) + ".jpg");
                     file.SaveAs(path);
-                    //数据操作
+                    //数据库操作
                     Image image = new Image();
                     image.ImageUrl = "/Content/images/" + ToMD5String(md5Key) + ".jpg";
                     image.UploadTitle = uploadTitle;
                     db.Images.Add(image);
                     db.SaveChanges();
 
-                    Image thumbnail = new Image();
-                    thumbnail.ImageUrl = Server.MapPath("/Content/Tumbnail/" + ToMD5String(md5Key) + ".jpg");
-                    thumbnail.UploadTitle = uploadTitle;
-                    db.Images.Add(thumbnail);
+                    Thumbnail thumbnail = new Thumbnail();
+                    thumbnail.ThumbnailUrl = "/Content/Tumbnail/" + ToMD5String(md5Key) + ".jpg";
+                    thumbnail.ThumbnailTitle = uploadTitle;
+                    db.Thumbnails.Add(thumbnail);
                     db.SaveChanges();
 
-                    SaveThumbnailImage(path, thumbnail.ImageUrl, 60, 60);
+                    string thumbNailPath = Path.Combine(Server.MapPath("/Content/Tumbnail/") + ToMD5String(md5Key) + ".jpg");
+                    SaveThumbnailImage(path, thumbNailPath, 60, 60);
                     return View();
                 }
             }

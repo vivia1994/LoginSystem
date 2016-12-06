@@ -1,18 +1,28 @@
 ﻿@using ImageUpload.Models;
 @{
     ViewBag.Title = "Index";
+    List<Thumbnail> thumbnails = ViewBag.Thumbnails;
     List<Image> images = ViewBag.Images;
-    Image image = ViewBag.Image;
 }
 
 <h2>Index</h2>
 
 <a href="/Image/Upload">Click to upload new images.</a>
+<form action ="Index" method="get">
 
-        @foreach (var item in images)
-        {
-           <div class="form-group ">
-                <a href="@item.ImageUrl.ToString()">@item.UploadTitle</a>
+    @foreach (var item in thumbnails)
+    {
+        <div class="form-group">
+           <input type="hidden" value="@item.ThumbnailUrl" name="ThumbnailUrl" />
+           <div class="col-md-3">
+               @item.ThumbnailTitle
+           </div>
+            <div class="col-md-9">
+                <a href="@ViewBag.ImageUrl"><img alt="60 x 60" src="@item.ThumbnailUrl.ToString()" /></a>
             </div>
-        }
+        </div> 
+    }
+</form>
+
+
 

@@ -9,5 +9,6 @@ namespace ImageUpload.Models
     public class ImageDatabaseContext : DbContext
     {
         public DbSet <Image> Images { get; set; }
+        public DbSet<Thumbnail>Thumbnails { get; set; }
     }
 }
