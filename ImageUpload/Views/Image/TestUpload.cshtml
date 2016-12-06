@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "TestUpload";
+}
+
+<h2>TestUpload</h2>
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    TestUpload
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h2>
+        TestUpload
+    </h2>
+    <p>
+        上传结果：<br />
+        <%= ViewData["uploadResult"]  %>
+    </p>
+    <% using (Html.BeginForm("TestUpload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    %>
+    <input name="upImg" type="file" />
+    <input type="submit" value="确定上传" />
+    <%
+    } %>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
